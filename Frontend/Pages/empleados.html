@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo</title>
+    <link rel="icon" type="image/png" href="../../Frontend/Images/LogoPage.jpg" />
+    <link rel="stylesheet" href="../../Frontend/Styles/styleemp.css">
+
+    <!-- El orden importa: primero la librería, luego el cliente, luego la lógica -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../Backend/permisos.js"></script>
+    <script src="../../Backend/auth.js"></script>
+</head>
+<body>
+
+    <main class="signup-container">
+        <div class="signup-header ">
+            <h1>Inicio de sesion</h1>
+        </div>
+
+        <form id="loginForm" class="form-content" onsubmit="handleLoginEmpleado(event); return false;">
+            <div class="input-group">
+                <label for="correo">Correo</label>
+                <input
+                    class="inputs"
+                    type="email"
+                    name="correo"
+                    id="correo"
+                    placeholder="tu_correo@empresa.com"
+                    required>
+
+                <label for="pwd">Contraseña</label>
+                <input
+                    class="inputs"
+                    type="password"
+                    name="pwd"
+                    id="pwd"
+                    placeholder="Contraseña"
+                    required>
+            </div>
+
+            <button class="botones crear" type="submit">Ingresar</button>
+
+            <p class="login-link">
+                Notifica a tu equipo de TI si no tienes cuenta.
+            </p>
+            <p class="login-link">
+                Eres un usuario normal?,
+                <a href="../../Frontend/Pages/login.html" class="links">Haz click aqui para ingresar desde el sitio de clientes.</a>
+            </p>
+        </form>
+    </main>
+</body>
+</html>

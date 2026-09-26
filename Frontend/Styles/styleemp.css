@@ -1,0 +1,120 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #2116ff 0%, #220eff 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.signup-container {
+  width: 100%;
+  max-width: 460px;
+  background: #FFFFFF;
+  padding: 35px;
+  border-radius: 22px;
+  box-shadow: 0 25px 45px rgba(24, 16, 255, 0.392);
+}
+
+.signup-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.signup-header h1 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1F2937;
+  margin-bottom: 8px;
+}
+
+.signup-header p {
+  font-size: 14px;
+  color: #bed7fa;
+}
+
+.form-content {
+  width: 100%;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.input-group label {
+  margin-top: 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4B5563;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+}
+
+.inputs {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: #F3F4F6;
+  font-size: 14px;
+  color: #1F2937;
+  transition: all 0.3s ease;
+}
+
+.inputs::placeholder {
+  color: #9CA3AF;
+}
+
+.inputs:focus {
+  outline: none;
+  background: #FFFFFF;
+  border-color: #A78BFA;
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.15);
+}
+
+.botones.crear {
+  width: 100%;
+  margin-top: 25px;
+  padding: 15px;
+  background: linear-gradient(135deg, hsl(241, 100%, 54%) 0%, #1125ff 100%);
+  color: #FFFFFF;
+  border: none;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.botones.crear:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(48, 110, 255, 0.45);
+}
+
+.login-link {
+  margin-top: 22px;
+  text-align: center;
+  font-size: 14px;
+  color: #4B5563;
+}
+
+.links {
+  color: #2717ff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.links:hover {
+  text-decoration: underline;
+}

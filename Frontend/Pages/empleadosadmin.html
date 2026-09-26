@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWOS - Administración</title>
+    <link rel="stylesheet" href="../../Frontend/Styles/profile.css">
+    <link rel="icon" type="image/png" href="../../Frontend/Images/LogoPage.jpg" />
+
+    <!-- El orden importa: primero la librería, luego el cliente, luego la lógica -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="../../js/supabase.js"></script>
+    <script src="../../Backend/permisos.js"></script>
+    <script src="../../Backend/auth.js"></script>
+    <script src="../../Backend/instrumentos.js"></script>
+</head>
+
+<body class="design">
+
+    <div class="header">
+        <div class="header-content">
+            <div class="back-button-container">
+                <a href="../../Frontend/Pages/search.html" class="back-btn" data-testid="back-button">Regresar</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+
+        <div class="sidebar">
+            <div class="profile-card">
+                <div class="profile-info">
+                    <label>Nombre:</label>
+                    <span id="userNombres" class="info-value">Cargando...</span>
+                </div>
+
+                <div class="profile-info">
+                    <label>Correo</label>
+                    <span id="userCorreo" class="info-value">Cargando...</span>
+                </div>
+
+                <div class="profile-info">
+                    <label>Perfil</label>
+                    <span id="userPerfil" class="info-value">Cargando...</span>
+                </div>
+            </div>
+
+            <button id="btnLogout" class="buttons">
+                Cerrar cuenta
+            </button>
+        </div>
+
+        <div class="main-content">
+            <h1 class="page-title">Administración de instrumentos</h1>
+
+            <div style="text-align:center; margin-bottom: 30px;">
+                <button class="buttons" data-permiso="insertar" onclick="abrirModalInstrumento()">
+                    Agregar instrumento
+                </button>
+            </div>
+
+            <!-- Sección cuando NO hay instrumentos en el stock -->
+            <div class="no-flights" data-testid="no-flights-section" style="display: none;">
+                <div class="no-flights-placeholder">
+                    <img src="../../Frontend/Images/NoInformation.png" alt="No hay instrumentos en el stock" class="no-flights-image">
+                </div>
+            </div>
+
+            <!-- Sección cuando SÍ hay instrumentos -->
+            <div class="flights-table-container" style="display: none;">
+                <!-- Los instrumentos se cargan dinámicamente aquí -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Modal para crear / editar instrumento -->
+    <div id="modalInstrumento" class="modal-overlay" style="display:none;">
+        <div class="modal-box">
+            <h2 id="modalTitulo">Agregar instrumento</h2>
+            <form id="formInstrumento" onsubmit="guardarInstrumento(event)">
+                <label for="nombre_instrumento">Nombre</label>
+                <input class="inputs" type="text" name="nombre_instrumento" required>
+
+                <label for="precio">Precio</label>
+                <input class="inputs" type="number" step="0.01" name="precio" required>
+
+                <label for="descripcion">Descripción</label>
+                <input class="inputs" type="text" name="descripcion">
+
+                <label for="stock">Stock</label>
+                <input class="inputs" type="number" name="stock" required>
+
+                <div class="modal-buttons">
+                    <button type="button" class="buttons" onclick="cerrarModalInstrumento()">Cancelar</button>
+                    <button type="submit" class="buttons" style="background:#7C3AED; color:white;">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            initEmpleadosAdminAuth(); // valida sesión, carga perfil y aplica permisos
+            cargarInstrumentos();     // trae los instrumentos desde Supabase
+        });
+    </script>
+
+</body>
+
+</html>
